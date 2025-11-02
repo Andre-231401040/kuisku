@@ -1,0 +1,32 @@
+[
+  {
+    "number": 1,
+    "question": "Ibu membeli 3 kg apel. Jika 1 kg apel harganya Rp20.000, berapa total uang yang harus dibayar Ibu?",
+    "options": ["Rp40.000", "Rp50.000", "Rp60.000", "Rp70.000", "Rp80.000"],
+    "answer": "Rp60.000"
+  },
+  {
+    "number": 2,
+    "question": "Indonesia merdeka pada tanggal...",
+    "options": ["1 Juni 1945", "17 Agustus 1945", "10 November 1945", "20 Mei 1945", "28 Oktober 1928"],
+    "answer": "17 Agustus 1945"
+  },
+  {
+    "number": 3,
+    "question": "Hewan yang berkembang biak dengan cara bertelur disebut...",
+    "options": ["Vivipar", "Ovipar", "Ovovivipar", "Herbivora", "Karnivora"],
+    "answer": "Ovipar"
+  },
+  {
+    "number": 4,
+    "question": "Alat pernapasan utama manusia adalah...",
+    "options": ["Hidung", "Kulit", "Paru-paru", "Tenggorokan", "Jantung"],
+    "answer": "Paru-paru"
+  },
+  {
+    "number": 5,
+    "question": "Hasil dari 12 × 8 adalah...",
+    "options": ["80", "88", "90", "96", "98"],
+    "answer": "96"
+  }
+]
