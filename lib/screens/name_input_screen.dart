@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:go_router/go_router.dart';
+import 'package:kuisku/providers/user_provider.dart';
 import 'package:kuisku/widgets/root_scaffold.dart';
 
 class NameInputScreen extends StatelessWidget {
-  const NameInputScreen({super.key});
+  final TextEditingController _textController = TextEditingController();
+
+  NameInputScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +44,7 @@ class NameInputScreen extends StatelessWidget {
               SizedBox(height: 28),
 
               TextField(
+                controller: _textController,
                 style: TextStyle(fontSize: body),
                 decoration: InputDecoration(
                   enabledBorder: OutlineInputBorder(
@@ -75,7 +81,10 @@ class NameInputScreen extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(12.0)),
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    context.read<UserProvider>().setName(_textController.text);
+                    context.go('/questions');
+                  },
                   child: Text(
                     'Mulai Kuis',
                     style: TextStyle(

@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:kuisku/providers/user_provider.dart';
 import 'package:kuisku/routes/routes.dart';
-// import 'package:kuisku/screens/splash_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [ChangeNotifierProvider(create: (_) => UserProvider())],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -12,10 +18,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'Flutter Demo',
+      title: 'KuisKu',
       theme: ThemeData(fontFamily: 'Poppins'),
       routerConfig: router,
-      // home: SplashScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
