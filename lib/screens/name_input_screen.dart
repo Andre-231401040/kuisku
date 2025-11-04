@@ -19,26 +19,6 @@ class NameInputScreen extends StatelessWidget {
         : screenHeight * 0.04;
 
     return RootScaffold(
-      titleWidget: Row(
-        children: [
-          Row(
-            children: [
-              Image.asset('assets/images/brain.png'),
-
-              SizedBox(width: 7.0),
-
-              Text(
-                'KuisKu',
-                style: TextStyle(
-                  fontFamily: 'Montserrat',
-                  fontSize: heading3,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: SizedBox(
@@ -113,6 +93,7 @@ class NameInputScreen extends StatelessWidget {
       ),
       screenWidth: screenWidth,
       screenHeight: screenHeight,
+      orientation: orientation,
     );
   }
 }

@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget>? actions;
-  final double horizontalPadding;
+  final double screenWidth;
+  final double screenHeight;
+  final Orientation orientation;
 
   const CustomAppBar({
     super.key,
     this.actions,
-    required this.horizontalPadding,
+    required this.screenWidth,
+    required this.screenHeight,
+    required this.orientation,
   });
 
   @override
@@ -15,12 +19,18 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final horizontalPadding = screenWidth * 0.05;
+
+    final double heading3 = orientation == Orientation.portrait
+        ? screenWidth * 0.06
+        : screenHeight * 0.06;
+
     return Container(
       padding: EdgeInsets.symmetric(
         horizontal: horizontalPadding,
         vertical: 16,
       ),
-      color: Colors.red,
+      color: Colors.transparent,
       child: SafeArea(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -35,7 +45,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   'KuisKu',
                   style: TextStyle(
                     fontFamily: 'Montserrat',
-                    fontSize: 24, // ganti heading3 dengan angka
+                    fontSize: heading3,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
