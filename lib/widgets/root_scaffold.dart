@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class ResponsiveScaffold extends StatelessWidget {
+class RootScaffold extends StatelessWidget {
   final Widget? titleWidget;
   final Widget body;
   final double screenWidth;
   final double screenHeight;
 
-  const ResponsiveScaffold({
+  const RootScaffold({
     super.key,
     this.titleWidget,
     required this.body,
