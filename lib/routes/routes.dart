@@ -14,7 +14,7 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/input_name',
       builder: (BuildContext context, GoRouterState state) {
-        return const NameInputScreen();
+        return NameInputScreen();
       },
     ),
   ],
