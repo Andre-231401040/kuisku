@@ -15,6 +15,12 @@ class NameInputScreen extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
     final orientation = MediaQuery.of(context).orientation;
 
+    final horizontalPadding = screenWidth * 0.05;
+
+    final verticalPadding = orientation == Orientation.portrait
+        ? screenHeight * 0.04
+        : screenHeight * 0.085;
+
     final double heading3 = orientation == Orientation.portrait
         ? screenWidth * 0.06
         : screenHeight * 0.06;
@@ -24,14 +30,15 @@ class NameInputScreen extends StatelessWidget {
         : screenHeight * 0.04;
 
     return RootScaffold(
-      body: Padding(
-        padding: orientation == Orientation.landscape
-            ? EdgeInsets.only(top: 80)
-            : EdgeInsets.all(0),
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: horizontalPadding,
+            vertical: verticalPadding,
+          ),
           child: SizedBox(
-            height: screenHeight,
+            height: screenHeight - 150,
             child: Column(
               mainAxisAlignment: orientation == Orientation.landscape
                   ? MainAxisAlignment.start
@@ -47,23 +54,27 @@ class NameInputScreen extends StatelessWidget {
                   ),
                 ),
 
-                SizedBox(height: 28),
+                SizedBox(
+                  height: orientation == Orientation.portrait
+                      ? screenHeight * 0.025
+                      : screenHeight * 0.05,
+                ),
 
                 TextField(
                   controller: _textController,
                   style: TextStyle(fontSize: body),
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                      borderRadius: BorderRadius.all(Radius.circular(12)),
                       borderSide: BorderSide(
-                        width: 2.0,
+                        width: 2,
                         color: Color(0xFFD6D6D6),
                       ),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                      borderRadius: BorderRadius.all(Radius.circular(12)),
                       borderSide: BorderSide(
-                        width: 2.0,
+                        width: 2,
                         color: Color(0xFF3A86FF),
                       ),
                     ),
@@ -75,7 +86,11 @@ class NameInputScreen extends StatelessWidget {
                   ),
                 ),
 
-                SizedBox(height: 28),
+                SizedBox(
+                  height: orientation == Orientation.portrait
+                      ? screenHeight * 0.035
+                      : screenHeight * 0.07,
+                ),
 
                 SizedBox(
                   width: double.infinity,
@@ -84,7 +99,7 @@ class NameInputScreen extends StatelessWidget {
                       padding: EdgeInsets.all(12),
                       backgroundColor: Color(0xFF3A86FF),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                        borderRadius: BorderRadius.all(Radius.circular(12)),
                       ),
                     ),
                     onPressed: () {

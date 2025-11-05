@@ -104,7 +104,7 @@ class QuestionCard extends StatelessWidget {
                               ? Color(0XFF3A86FF)
                               : Colors.white,
                           borderRadius: BorderRadius.circular(
-                            screenWidth * 0.01,
+                            screenWidth * 0.015,
                           ),
                         ),
                         child: Row(
@@ -152,7 +152,7 @@ class QuestionCard extends StatelessWidget {
                 backgroundColor: Color(0xFF3A86FF),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(
-                    Radius.circular(screenWidth * 0.02),
+                    Radius.circular(screenWidth * 0.03),
                   ),
                 ),
               ),
