@@ -111,6 +111,12 @@ class QuestionCard extends StatelessWidget {
                           children: [
                             Radio(value: option, activeColor: Colors.white),
 
+                            SizedBox(
+                              width: orientation == Orientation.portrait
+                                  ? screenWidth * 0.015
+                                  : screenHeight * 0.015,
+                            ),
+
                             Expanded(
                               child: Text(
                                 option,

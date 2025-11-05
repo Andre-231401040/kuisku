@@ -18,8 +18,8 @@ class NameInputScreen extends StatelessWidget {
     final horizontalPadding = screenWidth * 0.05;
 
     final verticalPadding = orientation == Orientation.portrait
-        ? screenHeight * 0.04
-        : screenHeight * 0.085;
+        ? screenHeight * 0.025
+        : screenHeight * 0.05;
 
     final double heading3 = orientation == Orientation.portrait
         ? screenWidth * 0.06
