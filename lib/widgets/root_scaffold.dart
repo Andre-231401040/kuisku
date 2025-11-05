@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:kuisku/widgets/custom_app_bar.dart';
+import 'package:kuisku/providers/theme_provider.dart';
 
 class RootScaffold extends StatelessWidget {
   final List<Widget>? actions;
@@ -19,8 +21,12 @@ class RootScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeProvider themeProvider = context.watch<ThemeProvider>();
+
     return Scaffold(
-      backgroundColor: Color(0xFFF9FAFB),
+      backgroundColor: themeProvider.isDarkMode
+          ? Color(0xFF0F172A)
+          : Color(0xFFF9FAFB),
       appBar: CustomAppBar(
         actions: actions,
         screenWidth: screenWidth,

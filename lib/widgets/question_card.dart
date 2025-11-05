@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kuisku/models/question_model.dart';
 import 'package:kuisku/providers/question_provider.dart';
+import 'package:kuisku/providers/theme_provider.dart';
 
 class QuestionCard extends StatelessWidget {
   final double screenWidth;
@@ -35,6 +36,8 @@ class QuestionCard extends StatelessWidget {
     final String? selectedAnswer = context
         .watch<QuestionProvider>()
         .userAnswers[currentIndex];
+
+    final ThemeProvider themeProvider = context.watch<ThemeProvider>();
 
     return PopScope(
       canPop: false,
@@ -69,6 +72,7 @@ class QuestionCard extends StatelessWidget {
             'Pertanyaan ${currentQuestion.number}',
             style: TextStyle(
               fontFamily: 'Montserrat',
+              color: themeProvider.isDarkMode ? Colors.white : Colors.black,
               fontSize: heading3,
               fontWeight: FontWeight.w700,
             ),
@@ -80,7 +84,13 @@ class QuestionCard extends StatelessWidget {
                 : screenHeight * 0.03,
           ),
 
-          Text(currentQuestion.question, style: TextStyle(fontSize: body)),
+          Text(
+            currentQuestion.question,
+            style: TextStyle(
+              color: themeProvider.isDarkMode ? Colors.white : Colors.black,
+              fontSize: body,
+            ),
+          ),
 
           SizedBox(
             height: orientation == Orientation.portrait

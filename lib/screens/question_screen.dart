@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:kuisku/models/question_model.dart';
 import 'package:kuisku/providers/question_provider.dart';
+import 'package:kuisku/providers/theme_provider.dart';
 import 'package:kuisku/widgets/root_scaffold.dart';
 import 'package:kuisku/widgets/question_card.dart';
 
@@ -23,6 +24,8 @@ class QuestionScreen extends StatelessWidget {
     final QuestionProvider questionProvider = context.watch<QuestionProvider>();
     final List<Question> questions = questionProvider.questions;
 
+    final ThemeProvider themeProvider = context.watch<ThemeProvider>();
+
     if (questions.isEmpty) {
       return Center(child: CircularProgressIndicator());
     }
@@ -30,17 +33,25 @@ class QuestionScreen extends StatelessWidget {
     return RootScaffold(
       actions: [
         ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            themeProvider.toggleTheme();
+          },
           style: ElevatedButton.styleFrom(
-            padding: EdgeInsets.all(
-              orientation == Orientation.portrait
-                  ? screenWidth * 0.03
-                  : screenWidth * 0.02,
-            ),
+            padding: EdgeInsets.all(12),
             backgroundColor: Colors.white,
             shape: CircleBorder(),
           ),
-          child: Image.asset('assets/images/moon.png'),
+          child: Image.asset(
+            themeProvider.isDarkMode
+                ? 'assets/images/sun.png'
+                : 'assets/images/moon.png',
+            width: orientation == Orientation.portrait
+                ? screenWidth * 0.055
+                : screenHeight * 0.055,
+            height: orientation == Orientation.portrait
+                ? screenWidth * 0.055
+                : screenHeight * 0.055,
+          ),
         ),
       ],
       body: SingleChildScrollView(

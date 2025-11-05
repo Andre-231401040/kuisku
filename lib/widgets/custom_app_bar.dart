@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:kuisku/providers/theme_provider.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget>? actions;
@@ -29,19 +31,25 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         ? screenWidth * 0.06
         : screenHeight * 0.06;
 
+    ThemeProvider themeProvider = context.watch<ThemeProvider>();
+
     return Container(
       padding: EdgeInsets.symmetric(
         horizontal: horizontalPadding,
         vertical: verticalPadding,
       ),
-      color: Color(0xFFF9FAFB),
+      color: themeProvider.isDarkMode ? Color(0xFF0F172A) : Color(0xFFF9FAFB),
       child: SafeArea(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
               children: [
-                Image.asset('assets/images/brain.png'),
+                Image.asset(
+                  themeProvider.isDarkMode
+                      ? 'assets/images/brain_white.png'
+                      : 'assets/images/brain_black.png',
+                ),
 
                 SizedBox(width: 7.0),
 
@@ -49,6 +57,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   'KuisKu',
                   style: TextStyle(
                     fontFamily: 'Montserrat',
+                    color: themeProvider.isDarkMode
+                        ? Colors.white
+                        : Colors.black,
                     fontSize: heading3,
                     fontWeight: FontWeight.w700,
                   ),
