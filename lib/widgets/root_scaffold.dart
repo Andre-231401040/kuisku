@@ -38,7 +38,7 @@ class RootScaffold extends StatelessWidget {
           left: horizontalPadding,
           right: horizontalPadding,
           top: verticalPadding,
-          bottom: 0,
+          bottom: horizontalPadding,
         ),
         child: body,
       ),
