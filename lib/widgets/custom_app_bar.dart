@@ -34,8 +34,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         horizontal: horizontalPadding,
         vertical: verticalPadding,
       ),
-      // color: Color(0xFFF9FAFB),
-      color: Colors.red,
+      color: Color(0xFFF9FAFB),
       child: SafeArea(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

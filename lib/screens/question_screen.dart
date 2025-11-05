@@ -32,7 +32,6 @@ class QuestionScreen extends StatelessWidget {
         ElevatedButton(
           onPressed: () {},
           style: ElevatedButton.styleFrom(
-            minimumSize: Size(screenWidth * 0.065, screenWidth * 0.065),
             backgroundColor: Colors.white,
             shape: CircleBorder(),
           ),

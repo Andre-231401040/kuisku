@@ -37,8 +37,8 @@ class NameInputScreen extends StatelessWidget {
             horizontal: horizontalPadding,
             vertical: verticalPadding,
           ),
-          child: SizedBox(
-            height: screenHeight - 150,
+          child: Container(
+            constraints: BoxConstraints(minHeight: screenHeight - 150),
             child: Column(
               mainAxisAlignment: orientation == Orientation.landscape
                   ? MainAxisAlignment.start
@@ -64,17 +64,27 @@ class NameInputScreen extends StatelessWidget {
                   controller: _textController,
                   style: TextStyle(fontSize: body),
                   decoration: InputDecoration(
+                    contentPadding: EdgeInsets.symmetric(
+                      horizontal: screenWidth * 0.02,
+                      vertical: orientation == Orientation.portrait
+                          ? screenHeight * 0.022
+                          : screenHeight * 0.065,
+                    ),
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(12)),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(screenWidth * 0.03),
+                      ),
                       borderSide: BorderSide(
-                        width: 2,
+                        width: screenWidth * 0.0045,
                         color: Color(0xFFD6D6D6),
                       ),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(12)),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(screenWidth * 0.03),
+                      ),
                       borderSide: BorderSide(
-                        width: 2,
+                        width: screenWidth * 0.0045,
                         color: Color(0xFF3A86FF),
                       ),
                     ),
@@ -96,10 +106,12 @@ class NameInputScreen extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.all(12),
+                      padding: EdgeInsets.all(screenWidth * 0.03),
                       backgroundColor: Color(0xFF3A86FF),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(12)),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(screenWidth * 0.03),
+                        ),
                       ),
                     ),
                     onPressed: () {
