@@ -12,12 +12,6 @@ class QuestionProvider extends ChangeNotifier {
     loadQuestions();
   }
 
-  int get currentIndex => _currentIndex;
-
-  List<Question> get questions => _questions;
-
-  List<String?> get userAnswers => _userAnswers;
-
   Future<void> loadQuestions() async {
     final String response = await rootBundle.loadString(
       'assets/data/questions.json',
@@ -30,11 +24,27 @@ class QuestionProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  int get currentIndex => _currentIndex;
+
+  List<Question> get questions => _questions;
+
+  List<String?> get userAnswers => _userAnswers;
+
   String? getUserAnswer(int index) {
     if (index >= 0 && index < _userAnswers.length) {
       return _userAnswers[index];
     }
     return null;
+  }
+
+  int getScore() {
+    int score = 0;
+    for (int i = 0; i < _questions.length; i++) {
+      if (_userAnswers[i] != null && _userAnswers[i] == _questions[i].answer) {
+        score++;
+      }
+    }
+    return score;
   }
 
   void setUserAnswer(int index, String? answer) {
@@ -62,15 +72,5 @@ class QuestionProvider extends ChangeNotifier {
       _currentIndex--;
       notifyListeners();
     }
-  }
-
-  int getScore() {
-    int score = 0;
-    for (int i = 0; i < _questions.length; i++) {
-      if (_userAnswers[i] != null && _userAnswers[i] == _questions[i].answer) {
-        score++;
-      }
-    }
-    return score;
   }
 }

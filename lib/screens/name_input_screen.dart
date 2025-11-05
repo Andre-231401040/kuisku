@@ -11,13 +11,13 @@ class NameInputScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
-    final orientation = MediaQuery.of(context).orientation;
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
+    final Orientation orientation = MediaQuery.of(context).orientation;
 
-    final horizontalPadding = screenWidth * 0.05;
+    final double horizontalPadding = screenWidth * 0.05;
 
-    final verticalPadding = orientation == Orientation.portrait
+    final double verticalPadding = orientation == Orientation.portrait
         ? screenHeight * 0.025
         : screenHeight * 0.05;
 

@@ -9,7 +9,7 @@ class QuestionCard extends StatelessWidget {
   final double screenWidth;
   final double screenHeight;
   final Orientation orientation;
-  final QuestionProvider questionProvider;
+  // final QuestionProvider questionProvider;
   final List<Question> questions;
 
   const QuestionCard({
@@ -17,7 +17,7 @@ class QuestionCard extends StatelessWidget {
     required this.screenWidth,
     required this.screenHeight,
     required this.orientation,
-    required this.questionProvider,
+    // required this.questionProvider,
     required this.questions,
   });
 
@@ -31,6 +31,7 @@ class QuestionCard extends StatelessWidget {
         ? screenWidth * 0.04
         : screenHeight * 0.04;
 
+    final QuestionProvider questionProvider = context.watch<QuestionProvider>();
     final int currentIndex = questionProvider.currentIndex;
     final Question currentQuestion = questions[currentIndex];
     final String? selectedAnswer = context

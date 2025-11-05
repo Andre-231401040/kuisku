@@ -21,15 +21,15 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
-    final orientation = MediaQuery.of(context).orientation;
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
+    final Orientation orientation = MediaQuery.of(context).orientation;
 
-    final double heading1Size = orientation == Orientation.portrait
+    final double heading1 = orientation == Orientation.portrait
         ? screenWidth * 0.15
         : screenHeight * 0.15;
 
-    final double textSize = orientation == Orientation.portrait
+    final double body = orientation == Orientation.portrait
         ? screenWidth * 0.04
         : screenHeight * 0.04;
 
@@ -45,14 +45,14 @@ class _SplashScreenState extends State<SplashScreen> {
                 style: TextStyle(
                   fontFamily: 'Montserrat',
                   color: Colors.black,
-                  fontSize: heading1Size,
+                  fontSize: heading1,
                   fontWeight: FontWeight.w700,
                 ),
               ),
 
               Text(
                 'Kuis seru, pengetahuan baru!',
-                style: TextStyle(color: Colors.black, fontSize: textSize),
+                style: TextStyle(color: Colors.black, fontSize: body),
               ),
             ],
           ),
