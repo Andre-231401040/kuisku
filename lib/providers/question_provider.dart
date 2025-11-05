@@ -44,6 +44,12 @@ class QuestionProvider extends ChangeNotifier {
     }
   }
 
+  void emptyUserAnswer() {
+    _currentIndex = 0;
+    _userAnswers = List<String?>.filled(_questions.length, null);
+    notifyListeners();
+  }
+
   void nextQuestion() {
     if (_currentIndex < _questions.length - 1) {
       _currentIndex++;

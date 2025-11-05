@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:kuisku/providers/user_provider.dart';
 import 'package:kuisku/providers/question_provider.dart';
@@ -187,7 +188,10 @@ class ResultScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    context.read<QuestionProvider>().emptyUserAnswer();
+                    context.go('/questions');
+                  },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
