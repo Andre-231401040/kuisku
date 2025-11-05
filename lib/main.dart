@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:kuisku/providers/user_provider.dart';
+import 'package:kuisku/providers/question_provider.dart';
 import 'package:kuisku/routes/routes.dart';
 
 void main() {
   runApp(
     MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_) => UserProvider())],
+      providers: [
+        ChangeNotifierProvider(create: (_) => UserProvider()),
+        ChangeNotifierProvider(create: (_) => QuestionProvider()),
+      ],
       child: const MyApp(),
     ),
   );
