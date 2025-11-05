@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-// import 'package:provider/provider.dart';
+import 'package:provider/provider.dart';
+import 'package:kuisku/models/question_model.dart';
+import 'package:kuisku/providers/question_provider.dart';
 import 'package:kuisku/widgets/root_scaffold.dart';
 import 'package:kuisku/widgets/question_card.dart';
 
@@ -20,6 +22,13 @@ class QuestionScreen extends StatelessWidget {
         ? screenWidth * 0.04
         : screenHeight * 0.04;
 
+    final QuestionProvider questionProvider = context.watch<QuestionProvider>();
+    final List<Question> questions = questionProvider.questions;
+
+    if (questions.isEmpty) {
+      return Center(child: CircularProgressIndicator());
+    }
+
     return RootScaffold(
       actions: [
         ElevatedButton(
@@ -36,7 +45,12 @@ class QuestionScreen extends StatelessWidget {
         padding: const EdgeInsets.only(top: 100),
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
-          child: QuestionCard(heading3: heading3, body: body),
+          child: QuestionCard(
+            heading3: heading3,
+            body: body,
+            questionProvider: questionProvider,
+            questions: questions,
+          ),
         ),
       ),
       screenWidth: screenWidth,
@@ -45,19 +59,3 @@ class QuestionScreen extends StatelessWidget {
     );
   }
 }
-
-// class QuestionScreen extends StatefulWidget {
-//   const QuestionScreen({super.key});
-
-//   @override
-//   State<QuestionScreen> createState() => _QuestionScreenState();
-// }
-
-// class _QuestionScreenState extends State<QuestionScreen> {
-//   @override
-//   Widget build(BuildContext context) {
-//     final String? name = context.watch<UserProvider>().name;
-
-//     return Text('$name');
-//   }
-// }

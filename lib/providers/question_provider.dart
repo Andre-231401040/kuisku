@@ -4,8 +4,15 @@ import 'package:flutter/services.dart';
 import 'package:kuisku/models/question_model.dart';
 
 class QuestionProvider extends ChangeNotifier {
+  int _currentIndex = 0;
   List<Question> _questions = [];
   List<String?> _userAnswers = [];
+
+  QuestionProvider() {
+    loadQuestions();
+  }
+
+  int get currentIndex => _currentIndex;
 
   List<Question> get questions => _questions;
 
@@ -30,9 +37,23 @@ class QuestionProvider extends ChangeNotifier {
     return null;
   }
 
-  void setUserAnswer(int index, String answer) {
+  void setUserAnswer(int index, String? answer) {
     if (index >= 0 && index < _userAnswers.length) {
       _userAnswers[index] = answer;
+      notifyListeners();
+    }
+  }
+
+  void nextQuestion() {
+    if (_currentIndex < _questions.length - 1) {
+      _currentIndex++;
+      notifyListeners();
+    }
+  }
+
+  void previousQuestion() {
+    if (_currentIndex > 0) {
+      _currentIndex--;
       notifyListeners();
     }
   }
