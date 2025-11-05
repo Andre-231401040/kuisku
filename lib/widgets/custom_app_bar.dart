@@ -21,6 +21,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     final horizontalPadding = screenWidth * 0.05;
 
+    final verticalPadding = orientation == Orientation.portrait
+        ? screenHeight * 0.01
+        : screenHeight * 0.025;
+
     final double heading3 = orientation == Orientation.portrait
         ? screenWidth * 0.06
         : screenHeight * 0.06;
@@ -28,9 +32,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return Container(
       padding: EdgeInsets.symmetric(
         horizontal: horizontalPadding,
-        vertical: 16,
+        vertical: verticalPadding,
       ),
-      color: Colors.transparent,
+      // color: Color(0xFFF9FAFB),
+      color: Colors.red,
       child: SafeArea(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
