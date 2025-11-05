@@ -164,7 +164,7 @@ class QuestionCard extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-                if (currentIndex == questions.length) {
+                if (currentIndex == questions.length - 1) {
                   context.go('/result');
                 } else {
                   questionProvider.nextQuestion();
