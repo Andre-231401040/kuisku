@@ -14,13 +14,11 @@ class QuestionScreen extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
     final orientation = MediaQuery.of(context).orientation;
 
-    final double heading3 = orientation == Orientation.portrait
-        ? screenWidth * 0.06
-        : screenHeight * 0.06;
+    final horizontalPadding = screenWidth * 0.05;
 
-    final double body = orientation == Orientation.portrait
-        ? screenWidth * 0.04
-        : screenHeight * 0.04;
+    final verticalPadding = orientation == Orientation.portrait
+        ? screenHeight * 0.04
+        : screenHeight * 0.085;
 
     final QuestionProvider questionProvider = context.watch<QuestionProvider>();
     final List<Question> questions = questionProvider.questions;
@@ -34,20 +32,24 @@ class QuestionScreen extends StatelessWidget {
         ElevatedButton(
           onPressed: () {},
           style: ElevatedButton.styleFrom(
-            fixedSize: Size(42, 42),
+            minimumSize: Size(screenWidth * 0.065, screenWidth * 0.065),
             backgroundColor: Colors.white,
             shape: CircleBorder(),
           ),
           child: Image.asset('assets/images/moon.png'),
         ),
       ],
-      body: Padding(
-        padding: const EdgeInsets.only(top: 100),
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: horizontalPadding,
+            vertical: verticalPadding,
+          ),
           child: QuestionCard(
-            heading3: heading3,
-            body: body,
+            screenWidth: screenWidth,
+            screenHeight: screenHeight,
+            orientation: orientation,
             questionProvider: questionProvider,
             questions: questions,
           ),

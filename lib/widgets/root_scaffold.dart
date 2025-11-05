@@ -19,13 +19,7 @@ class RootScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final horizontalPadding = screenWidth * 0.05;
-    final verticalPadding = orientation == Orientation.portrait
-        ? screenHeight * 0.02
-        : screenHeight * 0.085;
-
     return Scaffold(
-      extendBodyBehindAppBar: true,
       backgroundColor: Color(0xFFF9FAFB),
       appBar: CustomAppBar(
         actions: actions,
@@ -33,15 +27,7 @@ class RootScaffold extends StatelessWidget {
         screenHeight: screenHeight,
         orientation: orientation,
       ),
-      body: Padding(
-        padding: EdgeInsets.only(
-          left: horizontalPadding,
-          right: horizontalPadding,
-          top: verticalPadding,
-          bottom: horizontalPadding,
-        ),
-        child: body,
-      ),
+      body: body,
     );
   }
 }
