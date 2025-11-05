@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:go_router/go_router.dart';
 import 'package:kuisku/models/question_model.dart';
 import 'package:kuisku/providers/question_provider.dart';
 
@@ -163,7 +164,11 @@ class QuestionCard extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-                questionProvider.nextQuestion();
+                if (currentIndex == questions.length) {
+                  context.go('/result');
+                } else {
+                  questionProvider.nextQuestion();
+                }
               },
               child: Text(
                 currentIndex == questions.length - 1 ? 'Selesai' : 'Lanjut',
