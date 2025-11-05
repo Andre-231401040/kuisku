@@ -65,7 +65,6 @@ class QuestionScreen extends StatelessWidget {
             screenWidth: screenWidth,
             screenHeight: screenHeight,
             orientation: orientation,
-            // questionProvider: questionProvider,
             questions: questions,
           ),
         ),

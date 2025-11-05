@@ -9,7 +9,6 @@ class QuestionCard extends StatelessWidget {
   final double screenWidth;
   final double screenHeight;
   final Orientation orientation;
-  // final QuestionProvider questionProvider;
   final List<Question> questions;
 
   const QuestionCard({
@@ -17,7 +16,6 @@ class QuestionCard extends StatelessWidget {
     required this.screenWidth,
     required this.screenHeight,
     required this.orientation,
-    // required this.questionProvider,
     required this.questions,
   });
 
